@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lab 1 - Starbucks Order</title>
+  </head>
+  <body>
+    <h1>Starbucks Order Entry</h1>
+    <script>
+      let name = prompt("Welcome to Starbucks! What name should I put on the cup?") || "Guest";
+
+      let type = prompt("What can I get started for you (coffee, tea, other). Default = coffee") || "coffee";
+      type = type.toLowerCase();
+      if (type !== "coffee" && type !== "tea" && type !== "other") {
+        type = "coffee";
+      }
+
+      let size = prompt("Size (short, tall, grande, venti). Default = grande") || "grande";
+      size = size.toLowerCase();
+      if (size !== "short" && size !== "tall" && size !== "grande" && size !== "venti") {
+        size = "grande";
+      }
+
+      let temp = prompt("Temperature (hot, cold). Default = hot") || "hot";
+      temp = temp.toLowerCase();
+      if (temp !== "hot" && temp !== "cold") {
+        temp = "hot";
+      }
+
+      let addins = prompt("Any add-ins? (sugar, cream, lemon, etc.)") || "none";
+
+      let qty = prompt("How many of these drinks? Default = 1") || "1";
+      qty = parseInt(qty);
+      if (isNaN(qty) || qty < 1) {
+        qty = 1;
+      }
+
+      document.write("OK, " + name + ", I have your order as: " +
+                     qty + " " + temp + " " + size + " " + type +
+                     " with " + addins + ".");
+    </script>
+  </body>
+</html>
+
