@@ -10,15 +10,31 @@
     <script>
       let name = prompt("Welcome to Starbucks! What name should I put on the cup?") || "Guest";
 
+      if (name.toLowerCase() === "batman") {
+        alert("I'm Batman. 🦇");
+      } else if (name.toLowerCase() === "yoda") {
+        alert("Order, you must. ☕");
+      } else if (name.toLowerCase() === "rick") {
+        alert("Never gonna give you up... 🎶");
+      }
+
       let type = prompt("What can I get started for you (coffee, tea, other). Default = coffee") || "coffee";
       type = type.toLowerCase();
-      if (type !== "coffee" && type !== "tea" && type !== "other") {
-        type = "coffee";
+
+      if (type === "unicorn") {
+        alert("✨ Magical Unicorn Frappuccino coming right up! 🦄");
+        type = "unicorn frappuccino";
+      } else if (type !== "coffee" && type !== "tea" && type !== "other") {
+        type = "coffee"; // default
       }
 
       let size = prompt("Size (short, tall, grande, venti). Default = grande") || "grande";
       size = size.toLowerCase();
-      if (size !== "short" && size !== "tall" && size !== "grande" && size !== "venti") {
+
+      if (size === "groot") {
+        alert("I am Groot. 🌱");
+        size = "extra groot";
+      } else if (size !== "short" && size !== "tall" && size !== "grande" && size !== "venti") {
         size = "grande";
       }
 
@@ -35,7 +51,11 @@
       if (isNaN(qty) || qty < 1) {
         qty = 1;
       }
+      if (qty > 20000) {
+        alert("Whoa! Party order detected 🎉 We’ll need a bigger tray!");
+      }
 
+      // Final output
       document.write("OK, " + name + ", I have your order as: " +
                      qty + " " + temp + " " + size + " " + type +
                      " with " + addins + ".");
