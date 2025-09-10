@@ -1,45 +1,78 @@
-
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Lab 1 - Starbucks Order</title>
-  </head>
-  <body>
-    <h1>Starbucks Order Entry</h1>
-    <script>
-      let name = prompt("Welcome to Starbucks! What name should I put on the cup?") || "Guest";
+<head>
+  <meta charset="utf-8">
+  <title>Lab 01 - Starbucks Order</title>
+</head>
+<body>
+  <h1>Starbucks Order Entry</h1>
 
-      let type = prompt("What can I get started for you (coffee, tea, other). Default = coffee") || "coffee";
-      type = type.toLowerCase();
-      if (type !== "coffee" && type !== "tea" && type !== "other") {
-        type = "coffee";
-      }
+  <form id="orderForm">
+    <label>
+      Name: 
+      <input type="text" id="name" value="Guest">
+    </label><br><br>
 
-      let size = prompt("Size (short, tall, grande, venti). Default = grande") || "grande";
-      size = size.toLowerCase();
-      if (size !== "short" && size !== "tall" && size !== "grande" && size !== "venti") {
-        size = "grande";
-      }
+    <label>
+      Type: 
+      <select id="type">
+        <option value="coffee" selected>Coffee</option>
+        <option value="tea">Tea</option>
+        <option value="other">Other</option>
+      </select>
+    </label><br><br>
 
-      let temp = prompt("Temperature (hot, cold). Default = hot") || "hot";
-      temp = temp.toLowerCase();
-      if (temp !== "hot" && temp !== "cold") {
-        temp = "hot";
-      }
+    <label>
+      Size: 
+      <select id="size">
+        <option value="short">Short</option>
+        <option value="tall">Tall</option>
+        <option value="grande" selected>Grande</option>
+        <option value="venti">Venti</option>
+      </select>
+    </label><br><br>
 
-      let addins = prompt("Any add-ins? (sugar, cream, lemon, etc.)") || "none";
+    <label>
+      Temperature: 
+      <select id="temp">
+        <option value="hot" selected>Hot</option>
+        <option value="cold">Cold</option>
+      </select>
+    </label><br><br>
 
-      let qty = prompt("How many of these drinks? Default = 1") || "1";
-      qty = parseInt(qty);
-      if (isNaN(qty) || qty < 1) {
-        qty = 1;
-      }
+    <label>
+      Add-ins: 
+      <input type="text" id="addins" value="nothing">
+    </label><br><br>
 
-      document.write("OK, " + name + ", I have your order as: " +
-                     qty + " " + temp + " " + size + " " + type +
-                     " with " + addins + ".");
-    </script>
-  </body>
+    <label>
+      Quantity: 
+      <input type="number" id="qty" value="1" min="1">
+    </label><br><br>
+
+    <button type="button" onclick="placeOrder()">Place Order</button>
+  </form>
+
+  <h2>Order Summary</h2>
+  <p id="output"></p>
+
+  <script>
+    function placeOrder() {
+      let name = document.getElementById("name").value || "Guest";
+      let type = document.getElementById("type").value;
+      let size = document.getElementById("size").value;
+      let temp = document.getElementById("temp").value;
+      let addins = document.getElementById("addins").value || "nothing";
+      let qty = parseInt(document.getElementById("qty").value);
+
+      if (isNaN(qty) || qty < 1) qty = 1;
+
+      document.getElementById("output").textContent =
+        "OK, " + name + ", I have your order as: " +
+        qty + " " + temp + " " + size + " " + type +
+        " with " + addins + ".";
+    }
+  </script>
+</body>
 </html>
 
